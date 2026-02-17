@@ -1,3 +1,5 @@
+/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles/imgui.dir
+/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles/implot.dir
 /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles/main.dir
 /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles/edit_cache.dir
 /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles/rebuild_cache.dir

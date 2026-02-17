@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/main.dir/bpsk.c.o -o main  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSoapySDR.so.0.8.1 -lm -pthread 
+/usr/bin/c++ -g CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/bpsk.cpp.o -o main  -Wl,-rpath,/usr/local/lib libimgui.a libimplot.a -L/usr/lib/x86_64-linux-gnu  -lSDL2 /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libGLEW.so /usr/local/lib/libSoapySDR.so.0.8.1 -lm -lpthread libimgui.a -pthread 

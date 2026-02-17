@@ -58,7 +58,7 @@ def main():
     print(f"p1 = {p1}, p2 = {p2}")
     print(f"BnTs = {BnTs}, Nsps = {Nsps}, Kp = {Kp}, zeta = {zeta:.6f}\n")
     
-    # Анализ S-кривой
+   
     print("Анализ зависимости TED от offset:")
     offsets = np.arange(-Nsps//2, Nsps//2 + 1)
     ted_values = []
