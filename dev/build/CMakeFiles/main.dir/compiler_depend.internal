@@ -374,6 +374,14 @@ CMakeFiles/main.dir/bpsk.cpp.o
  /usr/include/linux/falloc.h
  /usr/include/x86_64-linux-gnu/bits/stat.h
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h
+ /usr/include/unistd.h
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h
+ /usr/include/x86_64-linux-gnu/bits/environments.h
+ /usr/include/x86_64-linux-gnu/bits/confname.h
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
+ /usr/include/linux/close_range.h
  /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.h
  /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.h
  /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imconfig.h

@@ -373,6 +373,14 @@ CMakeFiles/main.dir/bpsk.cpp.o: ../bpsk.cpp \
   /usr/include/linux/falloc.h \
   /usr/include/x86_64-linux-gnu/bits/stat.h \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
   /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.h \
   /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.h \
   /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imconfig.h \
@@ -391,6 +399,14 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.h:
 
 /home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.h:
+
+/usr/include/linux/close_range.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
 
@@ -498,6 +514,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/time.h:
@@ -585,6 +603,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
 /usr/include/SDL2/SDL_surface.h:
+
+/usr/include/unistd.h:
 
 /usr/include/c++/11/bits/stl_algobase.h:
 
@@ -677,6 +697,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/GL/gl.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
 
 /usr/include/c++/11/bits/exception_defines.h:
 
@@ -1083,6 +1105,8 @@ CMakeFiles/main.dir/main.cpp.o: ../main.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
 

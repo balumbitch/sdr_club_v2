@@ -86,57 +86,79 @@ int *convolution(int *upsampling_arr, int *impulse_arr, int length, int impulse_
     return upsampl_after_conv;
 }
 
-float gardner_ted(float *filtered_i, float *filtered_q, int n, int Nsps, int shift, int buffer_size) {
-    int idx0 = (n + shift) % buffer_size;
-    int idx1 = (n + shift + Nsps/2) % buffer_size;
-    int idx2 = (n + shift + Nsps) % buffer_size;
+float gardner_ted(float *filtered_i, float *filtered_q, int symbol_idx, int Nsps, int buffer_size) {
+    int early = (symbol_idx - 1 + buffer_size) % buffer_size;
+    int middle = symbol_idx;
+    int late = (symbol_idx + 1) % buffer_size;
     
-    float r0 = filtered_i[idx0];
-    float r1 = filtered_i[idx1];
-    float r2 = filtered_i[idx2];
+    float i_early = filtered_i[early];
+    float i_middle = filtered_i[middle];
+    float i_late = filtered_i[late];
     
-    float i0 = filtered_q[idx0];
-    float i1 = filtered_q[idx1];
-    float i2 = filtered_q[idx2];
+    float q_early = filtered_q[early];
+    float q_middle = filtered_q[middle];
+    float q_late = filtered_q[late];
     
-    float e = (r2 - r0) * r1 + (i2 - i0) * i1;
-    return e;
+    float error = ((i_late - i_early) * i_middle) + ((q_late - q_early) * q_middle);
+    
+    return error;
 }
 
-void apply_matched_filter(float *iq_buffer, int read_pos, int write_pos, int buffer_size, 
-                          float *filtered_i, float *filtered_q, int filtered_size,
-                          int *filtered_write_pos, int Nsps) {
+void apply_matched_filter_with_downsampling(float *iq_buffer, int read_pos, int write_pos, 
+                                           int buffer_size, float *filtered_i, float *filtered_q,
+                                           int filtered_size, int *filtered_write_pos, int Nsps) {
     static float *h = NULL;
     static int h_initialized = 0;
+    static int sample_counter = 0;
     
     if (!h_initialized) {
         h = (float*)malloc(Nsps * sizeof(float));
         for(int i = 0; i < Nsps; i++) {
-            h[i] = 1.0f;
+            float t = (float)(i - Nsps/2) / (Nsps/2);
+            if (t == 0) {
+                h[i] = 1.0;
+            } else {
+                h[i] = sin(M_PI * t) / (M_PI * t) * cos(0.5 * M_PI * t) / (1 - 4 * t * t);
+            }
         }
+        float sum = 0;
+        for(int i = 0; i < Nsps; i++) sum += h[i];
+        for(int i = 0; i < Nsps; i++) h[i] /= sum;
+        
         h_initialized = 1;
+        sample_counter = 0;
     }
     
-    int available = (write_pos >= read_pos) ? (write_pos - read_pos) : (buffer_size - read_pos + write_pos);
+    int available = 0;
+    if (write_pos >= read_pos) {
+        available = write_pos - read_pos;
+    } else {
+        available = buffer_size - read_pos + write_pos;
+    }
     
-    if (available < Nsps * 10) return;
+    if (available < Nsps) return;
     
-    int start_pos = (write_pos - Nsps * 10 + buffer_size) % buffer_size;
+    int start_pos = read_pos;
+    int samples_to_process = available;
     
-    for(int n = 0; n < Nsps * 10; n++) {
+    for (int n = 0; n < samples_to_process; n++) {
         int pos = (start_pos + n) % buffer_size;
         float conv_i = 0;
         float conv_q = 0;
         
-        for(int k = 0; k < Nsps; k++) {
+        for (int k = 0; k < Nsps; k++) {
             int sample_pos = (pos - k + buffer_size) % buffer_size;
             conv_i += iq_buffer[sample_pos * 2] * h[k];
             conv_q += iq_buffer[sample_pos * 2 + 1] * h[k];
         }
         
-        filtered_i[*filtered_write_pos] = conv_i;
-        filtered_q[*filtered_write_pos] = conv_q;
-        *filtered_write_pos = (*filtered_write_pos + 1) % filtered_size;
+        sample_counter++;
+        if (sample_counter >= Nsps) {
+            filtered_i[*filtered_write_pos] = conv_i;
+            filtered_q[*filtered_write_pos] = conv_q;
+            *filtered_write_pos = (*filtered_write_pos + 1) % filtered_size;
+            sample_counter = 0;
+        }
     }
 }
 
@@ -158,7 +180,7 @@ void *sdr_thread(void *arg) {
     int repeat_count = 50;
     int total_samples = conv_length * repeat_count;
     int16_t *tx_samples = (int16_t *)malloc(total_samples * 2 * sizeof(int16_t));
-    int scale_factor = 1;
+    int scale_factor = 3000;
     
     for(int rep = 0; rep < repeat_count; rep++) {
         for(int i = 0; i < conv_length; i++) {
@@ -172,7 +194,6 @@ void *sdr_thread(void *arg) {
     SoapySDRKwargs_set(&tx_args, "driver", "plutosdr"); 
     SoapySDRKwargs_set(&tx_args, "uri", shared->tx_uri);
     SoapySDRKwargs_set(&tx_args, "direct", "1");
-    SoapySDRKwargs_set(&tx_args, "timestamp_every", "1920");
     
     SoapySDRDevice *tx_sdr = SoapySDRDevice_make(&tx_args);
     SoapySDRKwargs_clear(&tx_args);
@@ -181,7 +202,6 @@ void *sdr_thread(void *arg) {
     SoapySDRKwargs_set(&rx_args, "driver", "plutosdr"); 
     SoapySDRKwargs_set(&rx_args, "uri", shared->rx_uri);
     SoapySDRKwargs_set(&rx_args, "direct", "1");
-    SoapySDRKwargs_set(&rx_args, "timestamp_every", "1920");
     
     SoapySDRDevice *rx_sdr = SoapySDRDevice_make(&rx_args);
     SoapySDRKwargs_clear(&rx_args);
@@ -197,7 +217,7 @@ void *sdr_thread(void *arg) {
     size_t channels[] = {0};
     const size_t channel_count = 1;
     
-    SoapySDRDevice_setGain(tx_sdr, SOAPY_SDR_TX, 0, -30.0);
+    SoapySDRDevice_setGain(tx_sdr, SOAPY_SDR_TX, 0, 80.0);
     SoapySDRDevice_setGain(rx_sdr, SOAPY_SDR_RX, 0, 20.0);
 
     SoapySDRStream *txStream = SoapySDRDevice_setupStream(tx_sdr, SOAPY_SDR_TX, SOAPY_SDR_CS16, channels, channel_count, NULL);
@@ -226,13 +246,13 @@ void *sdr_thread(void *arg) {
     
     int Nsps = 10;
     float p2 = 0;
-    float Kp = 0.002;
-    float zeta = sqrt(2) / 2;
-    float BnTs = 0.01;
+    float Kp = 0.01;
+    float zeta = 0.707;
+    float BnTs = 0.005;
     float theta = (BnTs / Nsps) / (zeta + 1/(4*zeta));
-    float K1 = (-4*zeta*theta) / ((1 + 2*zeta*theta + theta*theta) * Kp);
-    float K2 = (-4*theta*theta) / ((1 + 2*zeta*theta + theta*theta) * Kp);
-    int shift = 0;
+    float K1 = (4*zeta*theta) / (1 + 2*zeta*theta + theta*theta);
+    float K2 = (4*theta*theta) / (1 + 2*zeta*theta + theta*theta);
+    int no_signal_counter = 0;
     
     while (shared->running) {
         int total_samples_sent = 0;
@@ -243,7 +263,7 @@ void *sdr_thread(void *arg) {
                                  (total_samples - total_samples_sent) : tx_mtu;
 
             for (int i = 0; i < samples_to_send * 2; i++) {
-                tx_buff[i] = tx_samples[total_samples_sent * 2 + i] * 1500 << 4;
+                tx_buff[i] = tx_samples[total_samples_sent * 2 + i] * 1500;
             }
 
             for (int i = samples_to_send * 2; i < tx_mtu * 2; i++) {
@@ -282,30 +302,46 @@ void *sdr_thread(void *arg) {
                     }
                 }
                 
-                apply_matched_filter(shared->iq_buffer, shared->buffer_read_pos, shared->buffer_write_pos, 
+                apply_matched_filter_with_downsampling(shared->iq_buffer, shared->buffer_read_pos, shared->buffer_write_pos, 
                                    shared->buffer_size, shared->filtered_i_buffer, shared->filtered_q_buffer,
                                    shared->filtered_buffer_size, &shared->filtered_write_pos, Nsps);
                 
-                int available_filtered = (shared->filtered_write_pos >= shared->filtered_read_pos) ? 
-                                        (shared->filtered_write_pos - shared->filtered_read_pos) : 
-                                        (shared->filtered_buffer_size - shared->filtered_read_pos + shared->filtered_write_pos);
+                int available_filtered = 0;
+                if (shared->filtered_write_pos >= shared->filtered_read_pos) {
+                    available_filtered = shared->filtered_write_pos - shared->filtered_read_pos;
+                } else {
+                    available_filtered = shared->filtered_buffer_size - shared->filtered_read_pos + shared->filtered_write_pos;
+                }
                 
-                if (available_filtered > Nsps * 10) {
-                    int n = shared->filtered_read_pos + Nsps * 5;
-                    if (n >= shared->filtered_buffer_size) n -= shared->filtered_buffer_size;
+                const int SYMBOLS_TO_PROCESS = 5;
+                int symbols_processed = 0;
+                
+                while (available_filtered > 0 && symbols_processed < SYMBOLS_TO_PROCESS) {
+                    float amplitude = fabs(shared->filtered_i_buffer[shared->filtered_read_pos]) + 
+                                     fabs(shared->filtered_q_buffer[shared->filtered_read_pos]);
                     
-                    float e = gardner_ted(shared->filtered_i_buffer, shared->filtered_q_buffer, 
-                                         n, Nsps, shift, shared->filtered_buffer_size);
-                    
-                    float p1 = e * K1;
-                    p2 = p2 + p1 + e * K2;
-                    
-                    while (p2 > 1) p2 -= 2;
-                    while (p2 < -1) p2 += 1;
-                    
-                    shift = round(p2 * Nsps);
+                    if (amplitude > 0.01) {
+                        float e = gardner_ted(shared->filtered_i_buffer, shared->filtered_q_buffer, 
+                                             shared->filtered_read_pos, Nsps, shared->filtered_buffer_size);
+                        
+                        float p1 = e * K1;
+                        p2 = p2 + p1 + e * K2;
+                        
+                        if (p2 > 0.5f) p2 -= 1.0f;
+                        if (p2 < -0.5f) p2 += 1.0f;
+                        
+                        no_signal_counter = 0;
+                    } else {
+                        no_signal_counter++;
+                        if (no_signal_counter > 100) {
+                            p2 = 0;
+                            no_signal_counter = 0;
+                        }
+                    }
                     
                     shared->filtered_read_pos = (shared->filtered_read_pos + 1) % shared->filtered_buffer_size;
+                    symbols_processed++;
+                    available_filtered--;
                 }
                 
                 pthread_mutex_unlock(&shared->mutex);
@@ -358,6 +394,12 @@ void *imgui_thread(void *arg) {
     float *filtered_q_display = (float*)malloc(DISPLAY_SIZE * sizeof(float));
     
     bool running = true;
+    int frame_counter = 0;
+    
+    int available_samples = 0;
+    int samples_to_show = 0;
+    int available_filtered = 0;
+    int filtered_to_show = 0;
     
     while (running) {
         SDL_Event event;
@@ -374,47 +416,49 @@ void *imgui_thread(void *arg) {
         ImGui::NewFrame();
         ImGui::DockSpaceOverViewport(0, nullptr, ImGuiDockNodeFlags_None);
 
-        pthread_mutex_lock(&shared->mutex);
+        frame_counter++;
         
-        int available_samples = 0;
-        if (shared->buffer_write_pos >= shared->buffer_read_pos) {
-            available_samples = shared->buffer_write_pos - shared->buffer_read_pos;
-        } else {
-            available_samples = shared->buffer_size - shared->buffer_read_pos + shared->buffer_write_pos;
-        }
-        
-        int samples_to_show = (available_samples < DISPLAY_SIZE) ? available_samples : DISPLAY_SIZE;
-        
-        if (samples_to_show > 0) {
-            int start_pos = (shared->buffer_write_pos - samples_to_show + shared->buffer_size) % shared->buffer_size;
+        if (frame_counter % 3 == 0) {
+            pthread_mutex_lock(&shared->mutex);
             
-            for (int i = 0; i < samples_to_show; i++) {
-                int pos = (start_pos + i) % shared->buffer_size;
-                i_display[i] = shared->iq_buffer[pos * 2];
-                q_display[i] = shared->iq_buffer[pos * 2 + 1];
+            if (shared->buffer_write_pos >= shared->buffer_read_pos) {
+                available_samples = shared->buffer_write_pos - shared->buffer_read_pos;
+            } else {
+                available_samples = shared->buffer_size - shared->buffer_read_pos + shared->buffer_write_pos;
             }
-        }
-        
-        int available_filtered = 0;
-        if (shared->filtered_write_pos >= shared->filtered_read_pos) {
-            available_filtered = shared->filtered_write_pos - shared->filtered_read_pos;
-        } else {
-            available_filtered = shared->filtered_buffer_size - shared->filtered_read_pos + shared->filtered_write_pos;
-        }
-        
-        int filtered_to_show = (available_filtered < DISPLAY_SIZE) ? available_filtered : DISPLAY_SIZE;
-        
-        if (filtered_to_show > 0) {
-            int start_pos = (shared->filtered_write_pos - filtered_to_show + shared->filtered_buffer_size) % shared->filtered_buffer_size;
             
-            for (int i = 0; i < filtered_to_show; i++) {
-                int pos = (start_pos + i) % shared->filtered_buffer_size;
-                filtered_i_display[i] = shared->filtered_i_buffer[pos];
-                filtered_q_display[i] = shared->filtered_q_buffer[pos];
+            samples_to_show = (available_samples < DISPLAY_SIZE) ? available_samples : DISPLAY_SIZE;
+            
+            if (samples_to_show > 0) {
+                int start_pos = (shared->buffer_write_pos - samples_to_show + shared->buffer_size) % shared->buffer_size;
+                
+                for (int i = 0; i < samples_to_show; i++) {
+                    int pos = (start_pos + i) % shared->buffer_size;
+                    i_display[i] = shared->iq_buffer[pos * 2];
+                    q_display[i] = shared->iq_buffer[pos * 2 + 1];
+                }
             }
+            
+            if (shared->filtered_write_pos >= shared->filtered_read_pos) {
+                available_filtered = shared->filtered_write_pos - shared->filtered_read_pos;
+            } else {
+                available_filtered = shared->filtered_buffer_size - shared->filtered_read_pos + shared->filtered_write_pos;
+            }
+            
+            filtered_to_show = (available_filtered < DISPLAY_SIZE) ? available_filtered : DISPLAY_SIZE;
+            
+            if (filtered_to_show > 0) {
+                int start_pos = (shared->filtered_write_pos - filtered_to_show + shared->filtered_buffer_size) % shared->filtered_buffer_size;
+                
+                for (int i = 0; i < filtered_to_show; i++) {
+                    int pos = (start_pos + i) % shared->filtered_buffer_size;
+                    filtered_i_display[i] = shared->filtered_i_buffer[pos];
+                    filtered_q_display[i] = shared->filtered_q_buffer[pos];
+                }
+            }
+            
+            pthread_mutex_unlock(&shared->mutex);
         }
-        
-        pthread_mutex_unlock(&shared->mutex);
 
         ImGui::Begin("SDR Control Panel");
         ImGui::Text("TX URI: %s", shared->tx_uri);
@@ -488,12 +532,15 @@ int main(int argc, char* argv[]) {
     shared.rx_uri = argv[2];
     shared.buffer_size = 20000;
     shared.iq_buffer = (float*)malloc(shared.buffer_size * 2 * sizeof(float));
+    memset(shared.iq_buffer, 0, shared.buffer_size * 2 * sizeof(float));
     shared.buffer_write_pos = 0;
     shared.buffer_read_pos = 0;
     
     shared.filtered_buffer_size = 10000;
     shared.filtered_i_buffer = (float*)malloc(shared.filtered_buffer_size * sizeof(float));
     shared.filtered_q_buffer = (float*)malloc(shared.filtered_buffer_size * sizeof(float));
+    memset(shared.filtered_i_buffer, 0, shared.filtered_buffer_size * sizeof(float));
+    memset(shared.filtered_q_buffer, 0, shared.filtered_buffer_size * sizeof(float));
     shared.filtered_write_pos = 0;
     shared.filtered_read_pos = 0;
     
