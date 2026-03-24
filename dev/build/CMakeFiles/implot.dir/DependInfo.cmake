@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o" "gcc" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o.d"
-  "/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o" "gcc" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o.d"
   "/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o" "gcc" "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o.d"
   )
 

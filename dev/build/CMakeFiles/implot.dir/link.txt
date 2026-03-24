@@ -1,2 +1,2 @@
-/usr/bin/ar qc libimplot.a CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o
+/usr/bin/ar qc libimplot.a CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o
 /usr/bin/ranlib libimplot.a

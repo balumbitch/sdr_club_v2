@@ -83,24 +83,10 @@ CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp -o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.s
 
-CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o: CMakeFiles/implot.dir/flags.make
-CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o: /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp
-CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o: CMakeFiles/implot.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o -MF CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o.d -o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o -c /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp
-
-CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp > CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i
-
-CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp -o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s
-
 CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o: CMakeFiles/implot.dir/flags.make
 CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o: /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp
 CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o: CMakeFiles/implot.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o -MF CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o.d -o CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o -c /home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp
 
 CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.i: cmake_force
@@ -114,18 +100,16 @@ CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot
 # Object files for target implot
 implot_OBJECTS = \
 "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o" \
-"CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o" \
 "CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o"
 
 # External object files for target implot
 implot_EXTERNAL_OBJECTS =
 
 libimplot.a: CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.o
-libimplot.a: CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o
 libimplot.a: CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o
 libimplot.a: CMakeFiles/implot.dir/build.make
 libimplot.a: CMakeFiles/implot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libimplot.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libimplot.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/implot.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/implot.dir/link.txt --verbose=$(VERBOSE)
 

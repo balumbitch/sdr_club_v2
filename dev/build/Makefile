@@ -143,41 +143,91 @@ implot/fast:
 .PHONY : implot/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named bpsk_tx
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+bpsk_tx: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bpsk_tx
+.PHONY : bpsk_tx
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+bpsk_tx/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/build
+.PHONY : bpsk_tx/fast
 
-bpsk.o: bpsk.cpp.o
-.PHONY : bpsk.o
+#=============================================================================
+# Target rules for targets named bpsk_rx
+
+# Build rule for target.
+bpsk_rx: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bpsk_rx
+.PHONY : bpsk_rx
+
+# fast build rule for target.
+bpsk_rx/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/build
+.PHONY : bpsk_rx/fast
+
+#=============================================================================
+# Target rules for targets named info
+
+# Build rule for target.
+info: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 info
+.PHONY : info
+
+# fast build rule for target.
+info/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/build
+.PHONY : info/fast
+
+bpsk_rx.o: bpsk_rx.cpp.o
+.PHONY : bpsk_rx.o
 
 # target to build an object file
-bpsk.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bpsk.cpp.o
-.PHONY : bpsk.cpp.o
+bpsk_rx.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/bpsk_rx.cpp.o
+.PHONY : bpsk_rx.cpp.o
 
-bpsk.i: bpsk.cpp.i
-.PHONY : bpsk.i
+bpsk_rx.i: bpsk_rx.cpp.i
+.PHONY : bpsk_rx.i
 
 # target to preprocess a source file
-bpsk.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bpsk.cpp.i
-.PHONY : bpsk.cpp.i
+bpsk_rx.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/bpsk_rx.cpp.i
+.PHONY : bpsk_rx.cpp.i
 
-bpsk.s: bpsk.cpp.s
-.PHONY : bpsk.s
+bpsk_rx.s: bpsk_rx.cpp.s
+.PHONY : bpsk_rx.s
 
 # target to generate assembly for a file
-bpsk.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bpsk.cpp.s
-.PHONY : bpsk.cpp.s
+bpsk_rx.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/bpsk_rx.cpp.s
+.PHONY : bpsk_rx.cpp.s
+
+bpsk_tx.o: bpsk_tx.cpp.o
+.PHONY : bpsk_tx.o
+
+# target to build an object file
+bpsk_tx.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/bpsk_tx.cpp.o
+.PHONY : bpsk_tx.cpp.o
+
+bpsk_tx.i: bpsk_tx.cpp.i
+.PHONY : bpsk_tx.i
+
+# target to preprocess a source file
+bpsk_tx.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/bpsk_tx.cpp.i
+.PHONY : bpsk_tx.cpp.i
+
+bpsk_tx.s: bpsk_tx.cpp.s
+.PHONY : bpsk_tx.s
+
+# target to generate assembly for a file
+bpsk_tx.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/bpsk_tx.cpp.s
+.PHONY : bpsk_tx.cpp.s
 
 home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.o: home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.cpp.o
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.o
@@ -250,30 +300,6 @@ home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.s: home/plutoSDR/kirill
 home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.cpp.s
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.cpp.s
-
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.o: home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.o
-
-# target to build an object file
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o
-
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.i: home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.i
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.i
-
-# target to preprocess a source file
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.i
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.i
-
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.s: home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.s
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.s
-
-# target to generate assembly for a file
-home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.s
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.s
 
 home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.o: home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.cpp.o
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.o
@@ -371,30 +397,6 @@ home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.s
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.cpp.s
 
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.o: home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.o
-
-# target to build an object file
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.o
-
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.i: home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.i
-
-# target to preprocess a source file
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.i
-
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.s: home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.s
-
-# target to generate assembly for a file
-home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s
-.PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.cpp.s
-
 home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.o: home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.o
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.o
 
@@ -419,30 +421,6 @@ home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.s
 .PHONY : home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -451,12 +429,17 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... info"
+	@echo "... bpsk_rx"
+	@echo "... bpsk_tx"
 	@echo "... imgui"
 	@echo "... implot"
-	@echo "... main"
-	@echo "... bpsk.o"
-	@echo "... bpsk.i"
-	@echo "... bpsk.s"
+	@echo "... bpsk_rx.o"
+	@echo "... bpsk_rx.i"
+	@echo "... bpsk_rx.s"
+	@echo "... bpsk_tx.o"
+	@echo "... bpsk_tx.i"
+	@echo "... bpsk_tx.s"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.o"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.i"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_opengl3.s"
@@ -466,9 +449,6 @@ help:
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.o"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.i"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.s"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.o"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.i"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.s"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.o"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.i"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.s"
@@ -481,15 +461,9 @@ help:
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.o"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.i"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot.s"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.o"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.i"
-	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_demo.s"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.o"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.i"
 	@echo "... home/plutoSDR/kirill_vitalya_sdr/third_party/implot/implot_items.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 

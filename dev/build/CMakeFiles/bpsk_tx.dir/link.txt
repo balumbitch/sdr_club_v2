@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/bpsk_tx.dir/bpsk_tx.cpp.o -o bpsk_tx  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSoapySDR.so.0.8.1 -lm -pthread 

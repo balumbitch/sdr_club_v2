@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL2 -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/implot -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/imgui -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/imgui/backends
+CXX_INCLUDES = -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/implot -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/imgui -I/home/plutoSDR/kirill_vitalya_sdr/dev/../third_party/imgui/backends -I/usr/include/SDL2
 
-CXX_FLAGS = -g
+CXX_FLAGS = -g -fPIC -std=gnu++17
 

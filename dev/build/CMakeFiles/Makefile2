@@ -65,7 +65,8 @@ CMAKE_BINARY_DIR = /home/plutoSDR/kirill_vitalya_sdr/dev/build
 # The main recursive "all" target.
 all: CMakeFiles/imgui.dir/all
 all: CMakeFiles/implot.dir/all
-all: CMakeFiles/main.dir/all
+all: CMakeFiles/bpsk_tx.dir/all
+all: CMakeFiles/bpsk_rx.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -75,7 +76,9 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/imgui.dir/clean
 clean: CMakeFiles/implot.dir/clean
-clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/bpsk_tx.dir/clean
+clean: CMakeFiles/bpsk_rx.dir/clean
+clean: CMakeFiles/info.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,12 +88,12 @@ clean: CMakeFiles/main.dir/clean
 CMakeFiles/imgui.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target imgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=5,6,7,8,9,10,11 "Built target imgui"
 .PHONY : CMakeFiles/imgui.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/imgui.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/imgui.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 0
 .PHONY : CMakeFiles/imgui.dir/rule
@@ -111,12 +114,12 @@ CMakeFiles/imgui.dir/clean:
 CMakeFiles/implot.dir/all: CMakeFiles/imgui.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/implot.dir/build.make CMakeFiles/implot.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=9,10,11,12 "Built target implot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=12,13,14 "Built target implot"
 .PHONY : CMakeFiles/implot.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/implot.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/implot.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 0
 .PHONY : CMakeFiles/implot.dir/rule
@@ -131,31 +134,83 @@ CMakeFiles/implot.dir/clean:
 .PHONY : CMakeFiles/implot.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/main.dir
+# Target rules for target CMakeFiles/bpsk_tx.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/imgui.dir/all
-CMakeFiles/main.dir/all: CMakeFiles/implot.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=13,14,15 "Built target main"
-.PHONY : CMakeFiles/main.dir/all
+CMakeFiles/bpsk_tx.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=3,4 "Built target bpsk_tx"
+.PHONY : CMakeFiles/bpsk_tx.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 15
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
+CMakeFiles/bpsk_tx.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bpsk_tx.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 0
-.PHONY : CMakeFiles/main.dir/rule
+.PHONY : CMakeFiles/bpsk_tx.dir/rule
 
 # Convenience name for target.
-main: CMakeFiles/main.dir/rule
-.PHONY : main
+bpsk_tx: CMakeFiles/bpsk_tx.dir/rule
+.PHONY : bpsk_tx
 
 # clean rule for target.
-CMakeFiles/main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
-.PHONY : CMakeFiles/main.dir/clean
+CMakeFiles/bpsk_tx.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_tx.dir/build.make CMakeFiles/bpsk_tx.dir/clean
+.PHONY : CMakeFiles/bpsk_tx.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/bpsk_rx.dir
+
+# All Build rule for target.
+CMakeFiles/bpsk_rx.dir/all: CMakeFiles/imgui.dir/all
+CMakeFiles/bpsk_rx.dir/all: CMakeFiles/implot.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=1,2 "Built target bpsk_rx"
+.PHONY : CMakeFiles/bpsk_rx.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/bpsk_rx.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bpsk_rx.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 0
+.PHONY : CMakeFiles/bpsk_rx.dir/rule
+
+# Convenience name for target.
+bpsk_rx: CMakeFiles/bpsk_rx.dir/rule
+.PHONY : bpsk_rx
+
+# clean rule for target.
+CMakeFiles/bpsk_rx.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bpsk_rx.dir/build.make CMakeFiles/bpsk_rx.dir/clean
+.PHONY : CMakeFiles/bpsk_rx.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/info.dir
+
+# All Build rule for target.
+CMakeFiles/info.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles --progress-num=15 "Built target info"
+.PHONY : CMakeFiles/info.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/info.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/info.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/plutoSDR/kirill_vitalya_sdr/dev/build/CMakeFiles 0
+.PHONY : CMakeFiles/info.dir/rule
+
+# Convenience name for target.
+info: CMakeFiles/info.dir/rule
+.PHONY : info
+
+# clean rule for target.
+CMakeFiles/info.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/clean
+.PHONY : CMakeFiles/info.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

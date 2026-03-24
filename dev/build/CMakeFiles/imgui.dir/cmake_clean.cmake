@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/backends/imgui_impl_sdl2.cpp.o.d"
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.cpp.o"
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui.cpp.o.d"
-  "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o"
-  "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_demo.cpp.o.d"
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.cpp.o"
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_draw.cpp.o.d"
   "CMakeFiles/imgui.dir/home/plutoSDR/kirill_vitalya_sdr/third_party/imgui/imgui_tables.cpp.o"
